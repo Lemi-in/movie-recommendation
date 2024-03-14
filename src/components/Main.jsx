@@ -40,13 +40,13 @@ const handleClick=()=>{
 
 
   return (
-    <div className="w-full h-[70vh] md:h-[600px] text-[#FFFDE3]">
+    <div className="w-full h-[100vh] md:h-[600px] text-[#FFFDE3]">
       <div className="w-full h-full">
         <div className="absolute w-full h-[70vh] md:h-[600px] bg-gradient-to-r from-black">
           {" "}
         </div>
         <img
-          className="w-full h-[70vh] md:h-full object-cover"
+          className="w-full h-[90vh] md:h-full object-cover"
           src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
           alt=""
         />

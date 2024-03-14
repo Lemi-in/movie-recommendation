@@ -30,9 +30,9 @@
         setShowSearchForm(true);
    }
     return (
-      <div className="flex items-center justify-between p-4 z-[100] w-full absolute">
+      <div className="flex items-center justify-between p-2 z-[100] w-full absolute backdrop-filter backdrop-blur-lg bg-opacity-50 bg-gray-900">
         <Link to="/">
-          <img className='h-14 w-40' src={Logo} alt=".." />
+          <img className='h-11 w-40' src={Logo} alt=".." />
         </Link>
         <div className="flex">
         {showSearchForm && (
