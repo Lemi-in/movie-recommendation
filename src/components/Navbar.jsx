@@ -2,11 +2,13 @@
   import { Link, useNavigate } from "react-router-dom";
   import { UserAuth } from "../context/AuthContext";
   import Logo  from '../images/logo.png'
+  import {FaSearch} from "react-icons/fa"
 
   const Navbar = () => {
     const { user, logOut } = UserAuth();
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState("");
+    const [showSearchForm,setShowSearchForm]=useState(false);
 
     const handleLogOut = async () => {
       try {
@@ -24,21 +26,39 @@
       navigate(`?q=${queryTerm}`);
     }
 
+   const handleSearchButtonClick = () => {
+        setShowSearchForm(true);
+   }
     return (
-      <div className="flex item-center justify-between p-4 z-[100] w-full absolute">
+      <div className="flex items-center justify-between p-4 z-[100] w-full absolute">
         <Link to="/">
           <img className='h-14 w-40' src={Logo} alt=".." />
         </Link>
-        <form onSubmit={handleSearch}>
+        <div className="flex">
+        {showSearchForm && (
+         <form onSubmit={handleSearch} className="flex">
                 <input
                   type="text"
                   name="search"
                   autoComplete="off"
                   id="search-navbar"
-                  className="block w-full p-2 text-sm text-gray-900 border-b border-gray-300 bg-transparent focus:ring-blue-500 focus:border-blue-500 dark:text-white dark:border-gray-600 dark:bg-transparent dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="block w-full p-2 text-sm text-gray-900 border-b border-gray-300 bg-transparent  dark:text-white dark:border-gray-600 dark:bg-transparent dark:placeholder-gray-400"
                   placeholder="Search..."
                 />
+            <button type="submit" className="p-2">
+              <FaSearch className="text-white"/>
+            </button>
         </form>
+          )}
+          {!showSearchForm && (
+          <button
+            onClick={handleSearchButtonClick}
+            className="p-2"
+          >
+            <FaSearch className="text-white" />
+          </button>
+        )}
+        </div>
           
         {user?.email ? (
           <div>
