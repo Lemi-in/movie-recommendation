@@ -1,6 +1,7 @@
   import React, { useState } from "react";
   import { Link, useNavigate } from "react-router-dom";
   import { UserAuth } from "../context/AuthContext";
+  import Logo  from '../images/logo.png'
 
   const Navbar = () => {
     const { user, logOut } = UserAuth();
@@ -26,9 +27,7 @@
     return (
       <div className="flex item-center justify-between p-4 z-[100] w-full absolute">
         <Link to="/">
-          <h1 className="text-cyan-600 text-4xl font-bold cursor-pointer">
-            Movie Hall
-          </h1>
+          <img className='h-14 w-40' src={Logo} alt=".." />
         </Link>
         <form onSubmit={handleSearch}>
                 <input
@@ -36,10 +35,11 @@
                   name="search"
                   autoComplete="off"
                   id="search-navbar"
-                  className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="block w-full p-2 text-sm text-gray-900 border-b border-gray-300 bg-transparent focus:ring-blue-500 focus:border-blue-500 dark:text-white dark:border-gray-600 dark:bg-transparent dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Search..."
                 />
-              </form>
+        </form>
+          
         {user?.email ? (
           <div>
             <Link to="/account">
@@ -48,7 +48,7 @@
 
             <button
               onClick={handleLogOut}
-              className="text-[#FFFDE3] px-6 py-2 rounded cursor-pointer bg-cyan-600 "
+              className="text-[#FFFDE3] px-6 py-2 rounded cursor-pointer bg-[#00204a] "
             >
               Logout
             </button>
